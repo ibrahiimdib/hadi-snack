@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #121212;
+  color: #222222;
+  margin: 0;
+  padding: 16px;
+}
+
+main {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* header */
+header {
+  background-color: #1E1E1E;
+  max-width: 500px;
+  margin: 0 auto 16px auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.title h1 {
+  font-family: 'Permanent Marker', cursive !important;
+  margin: 0 0 16px 0;
+  font-size: 56px;
+  letter-spacing: 1.5px;
+  color: #FFC107;
+  text-align: center;
+  transform: rotate(-1.5deg);
+}
+
+.contact,
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #B0B0B0;
+  line-height: 1.4;
+}
+
+.wifi {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #B0B0B0;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.location {
+  margin-bottom: 0;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+  color: #FFC107;
+  flex-shrink: 0;
+}
+
+.contact a,
+.location a {
+  color: #B0B0B0;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact a:hover,
+.location a:hover {
+  text-decoration: underline;
+  color: #FFC107;
+}
+
+/* home page cards */
+.category-grid {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border-radius: 16px;
+  text-decoration: none;
+  background-size: cover;
+  background-position: center;
+  background-color: #333333; /* in case the image doesn't load */
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.02);
+}
+
+/* dark layer so the text is readable on top of the photo */
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.category-card h2 {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0 16px;
+  text-transform: uppercase;
+}
+
+.sandwiches-bg { background-image: url('images/tawouk.jpeg'); }
+.burgers-bg    { background-image: url('images/burgers.jpeg'); }
+.sides-bg      { background-image: url('images/fries.jpeg'); }
+.drinks-bg     { background-image: url('images/pepsi.jpg'); }
+
+/* menu pages */
+.menu-section {
+  background-color: #1E1E1E;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.menu-title {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  color: #B0B0B0;
+  margin: 0 0 16px;
+}
+
+.dish {
+  margin-bottom: 32px;
+}
+
+.dish:last-child {
+  margin-bottom: 0;
+}
+
+.dish-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+
+.dish-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dish-name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dish-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFC107;
+  white-space: nowrap;
+}
+
+.dish-ingredients {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #B0B0B0;
+  line-height: 1.45;
+}
+
+/* old styles, not used right now */
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.categories a {
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1.5px solid #f27a54;
+  color: #f27a54;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.categories a.active,
+.categories a:hover {
+  background-color: #f27a54;
+  color: #ffffff;
+}
+
+.menu-category h2 {
+  font-size: 20px;
+  margin: 8px 0 14px 0;
+  color: #222222;
+}
+
+.menu-item {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.item-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.price {
+  font-weight: 700;
+  color: #f27a54;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.ingredients {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.45;
+}
+.info {
+  background-color: #262626;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.info > div {
+  margin: 0;
+  padding: 14px 16px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.info > div:last-child {
+  border-bottom: none;
+}
+
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFC107;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.back-btn .material-symbols-outlined {
+  font-size: 24px;
+  color: #111111;
+}
