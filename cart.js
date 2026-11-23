@@ -29,17 +29,39 @@
     refresh();
   }
 
+  /* ---------- inline SVG icon paths (24x24 viewBox) ---------- */
+  var ICONS = {
+    add: '<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>',
+    remove: '<line x1="5" y1="12" x2="19" y2="12"></line>',
+    close: '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>',
+    shopping_cart:
+      '<circle cx="9" cy="21" r="1"></circle>' +
+      '<circle cx="20" cy="21" r="1"></circle>' +
+      '<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>'
+  };
+
+  function svgMarkup(name, size) {
+    var inner = ICONS[name] || '';
+    return (
+      '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" ' +
+      'fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      inner +
+      '</svg>'
+    );
+  }
+
   /* ---------- styles (injected so styles.css stays untouched) ---------- */
   var css = [
     '.cart-ctrl{display:flex;align-items:center;gap:8px;flex-shrink:0;align-self:center}',
     '.cart-btn{width:34px;height:34px;border-radius:50%;border:none;background:#FFC107;color:#111;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}',
-    '.cart-btn .material-symbols-outlined{color:#111;font-size:22px}',
+    '.cart-btn svg{width:20px;height:20px;color:#111;flex-shrink:0}',
     '.cart-btn:active{transform:scale(.92)}',
-    '.cart-btn.ghost{background:#333}',
-    '.cart-btn.ghost .material-symbols-outlined{color:#FFC107}',
+    '.cart-btn.ghost{background:#333;color:#FFC107}',
+    '.cart-btn.ghost svg{color:#FFC107}',
     '.cart-qty{min-width:18px;text-align:center;color:#fff;font-weight:700;font-size:17px}',
-    '.cart-fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;border:none;background:#FFC107;box-shadow:0 4px 14px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;padding:0}',
-    '.cart-fab .material-symbols-outlined{color:#111;font-size:28px}',
+    '.cart-fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;border:none;background:#FFC107;color:#111;box-shadow:0 4px 14px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;padding:0}',
+    '.cart-fab svg{width:26px;height:26px;color:#111;flex-shrink:0}',
     '.cart-badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e53935;color:#fff;font-size:12px;font-weight:700;display:none;align-items:center;justify-content:center}',
     '.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:100}',
     '.cart-overlay.open{display:flex}',
@@ -66,7 +88,7 @@
     b.type = 'button';
     b.className = 'cart-btn' + (cls ? ' ' + cls : '');
     b.setAttribute('aria-label', label);
-    b.innerHTML = '<span class="material-symbols-outlined">' + icon + '</span>';
+    b.innerHTML = svgMarkup(icon, 20);
     b.addEventListener('click', onClick);
     return b;
   }
@@ -109,7 +131,7 @@
   fab.type = 'button';
   fab.className = 'cart-fab';
   fab.setAttribute('aria-label', 'Open cart');
-  fab.innerHTML = '<span class="material-symbols-outlined">shopping_cart</span><span class="cart-badge"></span>';
+  fab.innerHTML = svgMarkup('shopping_cart', 26) + '<span class="cart-badge"></span>';
   document.body.appendChild(fab);
   var badge = fab.querySelector('.cart-badge');
 
